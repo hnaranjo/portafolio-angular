@@ -24,10 +24,10 @@
     </div>
     
     <div *ngIf="!ProductoService.cargando" 
-        class="ae-masonry ae-masonry-md-2 ae-masonry-xl-4">
-        <a *ngFor="let producto of ProductoService.productos" routerLink="/productos" class="rk-item ae-masonry__item">
+        class="animate__animated animate__pulse animate__delay-1s ae-masonry ae-masonry-md-2 ae-masonry-xl-4">
+        <a *ngFor="let producto of ProductoService.productos" [routerLink]="['/productos',producto.cod]" class="rk-item ae-masonry__item">
             <img src="assets/productos/{{producto.url}}" alt="">
-            <div class="item-meta">
+            <div [routerLink]="['/productos',producto.cod]" class="item-meta">
                 <h2>{{ producto.titulo }}</h2>
                 <p>{{ producto.categoria }}</p>
             </div>
