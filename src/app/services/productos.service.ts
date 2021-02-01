@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Producto } from '../interfaces/producto.interfaces';
+import { resolve } from '../../../node_modules/@types/q'
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class ProductosService {
       .subscribe( (resp: Producto[]) => {
         this.productos = resp;
         this.cargando = false;
-        resolve ();
+        resolve();
 
       });
 
@@ -53,14 +54,11 @@ export class ProductosService {
       this.filtrarProductos ( termino );
 
     }
-    this.productosFiltrado = this.productos.filter( producto => {
-      return true;
-    });
 
-    //console.log( this.productosFiltrado );
   }
 
   private filtrarProductos (termino: string) {
+
     this.productosFiltrado = [];
 
     termino = termino.toLocaleLowerCase();
